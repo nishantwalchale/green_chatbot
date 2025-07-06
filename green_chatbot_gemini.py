@@ -1,33 +1,31 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 🔐 Configure Gemini securely using Streamlit Secrets
+# Securely load Gemini API key from Streamlit secrets
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
-# 🏗️ App title and intro
+# App UI setup
 st.set_page_config(page_title="Green Building Chatbot", page_icon="🏗️")
 st.title("🏗️ Green Building Chatbot")
-st.caption("Powered by Gemini Pro | Focused on ECBC, IGBC & Indian green codes")
+st.caption("Ask questions about ECBC, IGBC, and Indian green building codes.")
 
-# ✍️ Ask a question
+# User input
 question = st.text_input("🌿 Ask me anything about green buildings:")
 
-# 📡 Generate response only if input is given
+# Run model when question is entered
 if question:
     with st.spinner("Thinking..."):
         try:
-            # Prompt Gemini with a role and question
             prompt = (
                 "You are an expert in Indian green building codes like ECBC and IGBC. "
                 "Answer clearly and accurately.\n\n"
                 f"Q: {question}\nA:"
             )
 
-            # 🎯 Load Gemini Pro and get response
-            model = genai.GenerativeModel(model_name="models/gemini-pro")
+            # ✅ Use correct Gemini model
+            model = genai.GenerativeModel(model_name="models/gemini-1.5-pro-latest")
             response = model.generate_content(prompt)
 
-            # ✅ Display result
             st.markdown("### 🧠 Answer")
             st.write(response.text)
 
