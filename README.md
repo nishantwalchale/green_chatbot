@@ -1,40 +1,81 @@
-# 🏗️ Green Building Chatbot (Gemini + Streamlit)
+🏗️ Green Building Chatbot (Local RAG using Ollama)
+This is a simple locally hosted RAG chatbot that answers questions from the IGBC Green New Buildings Rating System PDF — without using any paid APIs.
 
-This chatbot helps you learn and explore Indian green building codes such as **ECBC** and **IGBC**, powered by **Google Gemini Pro** and built with **Streamlit**.
+Built using:
 
-![demo](https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png)
+🔍 LangChain for RAG pipeline
 
----
+🧠 FAISS for local vector storage
 
-## 🌱 Features
+🧩 HuggingFace sentence embeddings
 
-- Answers questions about **energy-efficient** and **green building practices**
-- Based on **Gemini Pro** via Google's Generative AI API
-- Simple **web UI with Streamlit**
-- Free to deploy, fast to use
+🤖 Ollama with mistral or llama3 running locally
 
----
+🚀 Features
+✅ Load and process large green building PDFs
 
-## 🚀 Live Demo
+✅ Ask natural language questions about IGBC guidelines
 
-🔗 [Click to Use the Chatbot](https://your-app-name.streamlit.app)
+✅ No API keys or cloud dependencies
 
-> Replace with your actual Streamlit app URL after deployment.
+✅ Runs completely offline with Ollama
 
----
+🛠️ Requirements
+Python 3.10+
 
-## 🧠 How It Works
+Ollama installed and running with model like mistral or llama3
 
-- Uses `google.generativeai` to query Gemini Pro
-- Prompted with expert tone focused on Indian green construction
-- Clean frontend built with Streamlit for fast interaction
+Install dependencies:
 
----
+bash
+Copy
+Edit
+pip install langchain langchain-community faiss-cpu sentence-transformers
+📂 How to Run
+Download the IGBC PDF
+Update the path in pdf_path inside main() function of app.py
 
-## 🔧 Local Setup Instructions
+Make sure Ollama is running
+Start a terminal and run:
 
-### 1. Clone the repo
+bash
+Copy
+Edit
+ollama run mistral
+# or
+ollama run llama3
+Run the script
 
-```bash
-git clone https://github.com/your-username/green-chatbot.git
-cd green-chatbot
+bash
+Copy
+Edit
+python app.py
+Ask Questions!
+
+mathematica
+Copy
+Edit
+✅ Ask your Green Building PDF questions!
+
+Ask a question (or type 'exit'): What are the criteria for site selection?
+📚 Example Questions
+What is the intent of Energy Efficiency credit?
+
+Which documents are needed for Water Efficiency?
+
+How many points are required for Platinum rating?
+
+📦 File Structure
+graphql
+Copy
+Edit
+├── app.py           # Main chatbot script
+├── README.md        # Project instructions
+└── IGBC_Green.pdf   # Place your PDF file here
+🤝 Contributing
+This is a starter template. Feel free to fork and extend it for other rating systems like LEED, GRIHA, or ECBC.
+
+📣 Credits
+IGBC for the original PDF content
+
+LangChain, HuggingFace, FAISS, and Ollama — for enabling free, local AI
